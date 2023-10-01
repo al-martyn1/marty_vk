@@ -91,7 +91,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk")
     char itemSep = ';';
     char enumSep = ';';
 
-    ssq::sqstring scriptText = 
+    ssq::sqstring scriptText = marty_simplesquirrel::to_sqstring(prefix + " <- {}") + 
                       //makeEnumScriptString( prefix, "Colors"   , itemSep, enumSep, knownEnumNames
                       marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
                                           , VkCode::Lbutton          , VkCode::Rbutton          , VkCode::Mbutton          , VkCode::Cancel           
