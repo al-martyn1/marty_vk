@@ -91,9 +91,15 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk")
     char itemSep = ';';
     char enumSep = ';';
 
-    ssq::sqstring scriptText = marty_simplesquirrel::to_sqstring(prefix + " <- {}") + 
-                      //makeEnumScriptString( prefix, "Colors"   , itemSep, enumSep, knownEnumNames
-                      marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
+
+    ssq::sqstring scriptText = marty_simplesquirrel::to_sqstring(prefix + " <- {}");
+
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
+                                          , KeyEventFlags::NoFlags, KeyEventFlags::Extended, KeyEventFlags::AltDown, KeyEventFlags::Repeat, KeyEventFlags::Up
+                                          );
+
+
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
                                           , VkCode::Lbutton          , VkCode::Rbutton          , VkCode::Mbutton          , VkCode::Cancel           
                                           , VkCode::Xbutton1         , VkCode::Xbutton2         , VkCode::Back             , VkCode::Tab              
                                           , VkCode::Clear            , VkCode::Enter            , VkCode::Shift            , VkCode::Ctrl             
