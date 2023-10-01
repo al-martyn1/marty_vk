@@ -9,7 +9,7 @@
 #include <stdexcept>
 
 
-namespace virtual_keys{
+namespace marty_vk{
 
 enum class VkCode : std::uint32_t
 {
@@ -912,4 +912,4 @@ MARTY_CPP_ENUM_CLASS_SERIALIZE_SET(VkCode, std::set)
 
 MARTY_CPP_ENUM_CLASS_DESERIALIZE_SET(VkCode, std::set)
 
-} // virtual_keys
+} // marty_vk

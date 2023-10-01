@@ -1013,7 +1013,7 @@ int main()
     using namespace marty_cpp;
 
 
-    auto ns = makeNamespaceOutputWriteGuard( std::cout, std::string("virtual_keys") );
+    auto ns = makeNamespaceOutputWriteGuard( std::cout, std::string("marty_vk") );
 
     auto genCfg = EnumGeneratorTemplate<std::string>::defaultCpp();
     genCfg.enumNameFormat = "$(ENAMNAME)";
