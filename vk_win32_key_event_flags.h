@@ -6,9 +6,11 @@
 
 #include <exception>
 #include <map>
+#include <set>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
 
 
@@ -18,11 +20,11 @@ enum class KeyEventFlags : std::uint32_t
 {
     Invalid    = (std::uint32_t)(-1),
     Unknown    = (std::uint32_t)(-1),
-    NoFlags    = 0x000000,
-    Extended   = 0x000100,
-    AltDown    = 0x002000,
-    Repeat     = 0x004000,
-    Up         = 0x008000
+    NoFlags    = 0x0000,
+    Extended   = 0x0100,
+    AltDown    = 0x2000,
+    Repeat     = 0x4000,
+    Up         = 0x8000
 
 }; // enum class KeyEventFlags : std::uint32_t
 
@@ -50,6 +52,10 @@ MARTY_CPP_ENUM_FLAGS_DESERIALIZE_BEGIN( KeyEventFlags, std::map, 1 )
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::NoFlags    , "noflags"  );
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::Repeat     , "repeat"   );
 MARTY_CPP_ENUM_FLAGS_DESERIALIZE_END( KeyEventFlags, std::map, 1 )
+
+MARTY_CPP_ENUM_FLAGS_SERIALIZE_SET(KeyEventFlags, std::set)
+
+MARTY_CPP_ENUM_FLAGS_DESERIALIZE_SET(KeyEventFlags, std::set)
 
 } // namespace marty_vk
 

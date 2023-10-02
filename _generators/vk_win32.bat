@@ -30,7 +30,7 @@
 @rem KF_MENUMODE
 @rem 0x1000	Manipulates the menu mode flag, which indicates whether a menu is active.
 
-umba-enum-gen --overwrite %DECLCLS% %FMTHEX% %SERIALIZE% %EXTRA% %HEX6% %FLAGS% %UINT32% -E=KeyEventFlags -F=%KEYEVENTFLAGS_DEF% ..\vk_win32_key_event_flags.h
+umba-enum-gen --overwrite %DECLCLS% %FMTHEX% %SERIALIZE% %FLAGENUM_EXTRA% %HEX4% %FLAGS% %UINT32% -E=KeyEventFlags -F=%KEYEVENTFLAGS_DEF% ..\vk_win32_key_event_flags.h
 
 
 
