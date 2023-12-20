@@ -85,14 +85,26 @@ namespace simplesquirrel {
 //----------------------------------------------------------------------------
 
 inline
-ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk")
+ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk", bool createTable = true, bool bAddLineFeed = false)
 {
     //itemSep = enumSep;
     char itemSep = ';';
     char enumSep = ';';
 
+    ssq::sqstring scriptText = createTable ? marty_simplesquirrel::to_sqstring(prefix + " <- {}") : ssq::sqstring();
 
-    ssq::sqstring scriptText = marty_simplesquirrel::to_sqstring(prefix + " <- {}");
+    auto addLineFeed = [&]()
+    {
+        if (bAddLineFeed)
+        {
+            scriptText += _SC("\n");
+        }
+    };
+
+    if (createTable)
+    {
+        addLineFeed();
+    }
 
     scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , itemSep, enumSep
                                           , KeyEventFlags::NoFlags
@@ -102,6 +114,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk")
                                           , KeyEventFlags::Up
                                           );
 
+    addLineFeed();
     scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
                                           , VkCode::Lbutton          , VkCode::Rbutton          , VkCode::Mbutton          , VkCode::Cancel           
                                           , VkCode::Xbutton1         , VkCode::Xbutton2         , VkCode::Back             , VkCode::Tab              
@@ -153,7 +166,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk")
                                           , VkCode::Ereof            , VkCode::Play             , VkCode::Zoom             , VkCode::Noname           
                                           , VkCode::Pa1              , VkCode::OemClear         , VkCode::AbntC1           , VkCode::AbntC2           
                                           );
-
+    addLineFeed();
     return scriptText;
 
 }
