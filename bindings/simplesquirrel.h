@@ -85,28 +85,31 @@ namespace simplesquirrel {
 //----------------------------------------------------------------------------
 
 inline
-ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk", bool createTable = true, bool bAddLineFeed = false)
+ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, marty_simplesquirrel::EnumScriptGenerationType generationType)
 {
     //itemSep = enumSep;
-    char itemSep = ';';
-    char enumSep = ';';
+    // char itemSep = ';';
+    // char enumSep = ';';
 
-    ssq::sqstring scriptText = createTable ? marty_simplesquirrel::to_sqstring(prefix + " <- {}") : ssq::sqstring();
+    ssq::sqstring scriptText; // = createTable ? marty_simplesquirrel::to_sqstring(prefix + " <- {}") : ssq::sqstring();
 
     auto addLineFeed = [&]()
     {
-        if (bAddLineFeed)
+        // singleLineScript   = 0x00,
+        // multilineScript    = 0x01,
+        // mdDoc              = 0x02
+        if (generationType!=marty_simplesquirrel::EnumScriptGenerationType::singleLineScript) // (bAddLineFeed)
         {
             scriptText += _SC("\n");
         }
     };
 
-    if (createTable)
-    {
-        addLineFeed();
-    }
+    // if (createTable)
+    // {
+    //     addLineFeed();
+    // }
 
-    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , itemSep, enumSep
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , generationType // itemSep, enumSep
                                           , KeyEventFlags::NoFlags
                                           , KeyEventFlags::Extended
                                           , KeyEventFlags::AltDown
@@ -115,7 +118,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix = "Vk", bool creat
                                           );
 
     addLineFeed();
-    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , itemSep, enumSep
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , generationType // itemSep, enumSep
                                           , VkCode::Lbutton          , VkCode::Rbutton          , VkCode::Mbutton          , VkCode::Cancel           
                                           , VkCode::Xbutton1         , VkCode::Xbutton2         , VkCode::Back             , VkCode::Tab              
                                           , VkCode::Clear            , VkCode::Enter            , VkCode::Shift            , VkCode::Ctrl             
