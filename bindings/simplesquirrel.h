@@ -85,7 +85,7 @@ namespace simplesquirrel {
 //----------------------------------------------------------------------------
 
 inline
-ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, marty_simplesquirrel::EnumScriptGenerationType generationType)
+ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, const marty_simplesquirrel::EnumScriptGenerationOptions &generationOptions)
 {
     //itemSep = enumSep;
     // char itemSep = ';';
@@ -98,7 +98,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, mar
         // singleLineScript   = 0x00,
         // multilineScript    = 0x01,
         // mdDoc              = 0x02
-        if (generationType!=marty_simplesquirrel::EnumScriptGenerationType::singleLineScript) // (bAddLineFeed)
+        if (generationOptions.generationType!=marty_simplesquirrel::EnumScriptGenerationType::singleLineScript) // (bAddLineFeed)
         {
             scriptText += _SC("\n");
         }
@@ -109,7 +109,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, mar
     //     addLineFeed();
     // }
 
-    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , generationType // itemSep, enumSep
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , generationOptions // itemSep, enumSep
                                           , KeyEventFlags::NoFlags
                                           , KeyEventFlags::Extended
                                           , KeyEventFlags::AltDown
@@ -118,7 +118,7 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, mar
                                           );
 
     addLineFeed();
-    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , generationType // itemSep, enumSep
+    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "Code", ""   , generationOptions // itemSep, enumSep
                                           , VkCode::Lbutton          , VkCode::Rbutton          , VkCode::Mbutton          , VkCode::Cancel           
                                           , VkCode::Xbutton1         , VkCode::Xbutton2         , VkCode::Back             , VkCode::Tab              
                                           , VkCode::Clear            , VkCode::Enter            , VkCode::Shift            , VkCode::Ctrl             
