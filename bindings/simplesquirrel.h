@@ -109,8 +109,9 @@ ssq::sqstring enumsExposeMakeScript(const std::string &prefix  /* = "Vk" */, con
     //     addLineFeed();
     // }
 
-    scriptText += marty_simplesquirrel::makeEnumClassScriptString( prefix+".", "KeyEventFlags", ""   , generationOptions // itemSep, enumSep
-                                          , KeyEventFlags::NoFlags
+    scriptText += marty_simplesquirrel::makeEnumClassScriptStringEx( prefix+".", "KeyEventFlags", ""   , generationOptions // itemSep, enumSep
+                                          , std::vector<std::pair<std::string, int> >{ {"NoFlags", (int)KeyEventFlags::NoFlags} }
+                                          , KeyEventFlags::None
                                           , KeyEventFlags::Extended
                                           , KeyEventFlags::AltDown
                                           , KeyEventFlags::Repeat

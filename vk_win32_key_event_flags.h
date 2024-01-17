@@ -20,6 +20,7 @@ enum class KeyEventFlags : std::uint32_t
 {
     Invalid    = (std::uint32_t)(-1),
     Unknown    = (std::uint32_t)(-1),
+    None       = 0x0000,
     NoFlags    = 0x0000,
     Extended   = 0x0100,
     AltDown    = 0x2000,
@@ -35,7 +36,7 @@ MARTY_CPP_ENUM_FLAGS_SERIALIZE_BEGIN( KeyEventFlags, std::map, 1 )
     MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::AltDown    , "AltDown"  );
     MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::Extended   , "Extended" );
     MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::Invalid    , "Invalid"  );
-    MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::NoFlags    , "NoFlags"  );
+    MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::None       , "None"     );
     MARTY_CPP_ENUM_FLAGS_SERIALIZE_ITEM( KeyEventFlags::Repeat     , "Repeat"   );
 MARTY_CPP_ENUM_FLAGS_SERIALIZE_END( KeyEventFlags, std::map, 1 )
 
@@ -47,9 +48,10 @@ MARTY_CPP_ENUM_FLAGS_DESERIALIZE_BEGIN( KeyEventFlags, std::map, 1 )
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::Extended   , "extended" );
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::Invalid    , "invalid"  );
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::Invalid    , "unknown"  );
-    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::NoFlags    , "no-flags" );
-    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::NoFlags    , "no_flags" );
-    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::NoFlags    , "noflags"  );
+    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::None       , "none"     );
+    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::None       , "no-flags" );
+    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::None       , "no_flags" );
+    MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::None       , "noflags"  );
     MARTY_CPP_ENUM_FLAGS_DESERIALIZE_ITEM( KeyEventFlags::Repeat     , "repeat"   );
 MARTY_CPP_ENUM_FLAGS_DESERIALIZE_END( KeyEventFlags, std::map, 1 )
 
