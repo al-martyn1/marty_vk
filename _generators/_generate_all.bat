@@ -1,0 +1,1 @@
+@call vk_win32.bat

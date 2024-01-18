@@ -281,6 +281,8 @@ enum class VkCode : std::uint32_t
 
 }; // enum class VkCode : std::uint32_t
 
+MARTY_CPP_MAKE_ENUM_IS_FLAGS_FOR_NON_FLAGS_ENUM(VkCode)
+
 MARTY_CPP_ENUM_CLASS_SERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Rbutton            , "Rbutton"           );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::F                  , "F"                 );
