@@ -25,7 +25,7 @@ enum class VkCode : std::uint32_t
     Tab                 = 9 /* VK_TAB */,
     Clear               = 12 /* VK_CLEAR */,
     Enter               = 13 /* VK_ENTER */,
-    Return              = 13 /* VK_RETURN */,
+    _Return             = 13 /* VK_RETURN */,
     Shift               = 16 /* VK_SHIFT */,
     Ctrl                = 17 /* VK_CTRL */,
     Control             = 17 /* VK_CONTROL */,
@@ -66,7 +66,7 @@ enum class VkCode : std::uint32_t
     Execute             = 43 /* VK_EXECUTE */,
     Snapshot            = 44 /* VK_SNAPSHOT */,
     Insert              = 45 /* VK_INSERT */,
-    Delete              = 46 /* VK_DELETE */,
+    _Delete             = 46 /* VK_DELETE */,
     Help                = 47 /* VK_HELP */,
     _0                  = 48 /* VK_0 */,
     Key0                = 48 /* VK_KEY0 */,
@@ -333,7 +333,6 @@ MARTY_CPP_ENUM_CLASS_SERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Next               , "Next"              );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Insert             , "Insert"            );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Print              , "Print"             );
-    MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Delete             , "Delete"            );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::End                , "End"               );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Home               , "Home"              );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::_4                 , "4"                 );
@@ -347,6 +346,8 @@ MARTY_CPP_ENUM_CLASS_SERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Crsel              , "Crsel"             );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::F10                , "F10"               );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Execute            , "Execute"           );
+    MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::AbntC2             , "AbntC2"            );
+    MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::_Delete            , "Delete"            );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::_0                 , "0"                 );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Help               , "Help"              );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::_2                 , "2"                 );
@@ -481,7 +482,6 @@ MARTY_CPP_ENUM_CLASS_SERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Pa1                , "Pa1"               );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::OemClear           , "OemClear"          );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::AbntC1             , "AbntC1"            );
-    MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::AbntC2             , "AbntC2"            );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::Numpad0Dummy       , "Numpad0Dummy"      );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::NumpadaddDummy     , "NumpadaddDummy"    );
     MARTY_CPP_ENUM_CLASS_SERIALIZE_ITEM( VkCode::ReturnDummy        , "ReturnDummy"       );
@@ -559,7 +559,6 @@ MARTY_CPP_ENUM_CLASS_DESERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Next               , "next"                );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Insert             , "insert"              );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Print              , "print"               );
-    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Delete             , "delete"              );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::End                , "end"                 );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Home               , "home"                );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::_4                 , "4"                   );
@@ -587,6 +586,10 @@ MARTY_CPP_ENUM_CLASS_DESERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Crsel              , "crsel"               );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::F10                , "f10"                 );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Execute            , "execute"             );
+    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abnt-c2"             );
+    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abnt_c2"             );
+    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abntc2"              );
+    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::_Delete            , "delete"              );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::_0                 , "0"                   );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::_0                 , "key0"                );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Help               , "help"                );
@@ -883,9 +886,6 @@ MARTY_CPP_ENUM_CLASS_DESERIALIZE_BEGIN( VkCode, std::map, 1 )
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC1             , "abnt-c1"             );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC1             , "abnt_c1"             );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC1             , "abntc1"              );
-    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abnt-c2"             );
-    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abnt_c2"             );
-    MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::AbntC2             , "abntc2"              );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Numpad0Dummy       , "numpad0-dummy"       );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Numpad0Dummy       , "numpad0_dummy"       );
     MARTY_CPP_ENUM_CLASS_DESERIALIZE_ITEM( VkCode::Numpad0Dummy       , "numpad0dummy"        );
