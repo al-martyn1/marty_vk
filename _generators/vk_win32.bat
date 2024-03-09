@@ -23,7 +23,7 @@
 @set VALUES_PASCAL=--enum-values-style=PascalStyle 
 @set SERIALIZE_PASCAL=--serialize-style=PascalStyle 
 
-@set KEYEVENTFLAGS_DEF=invalid,unknown=-1;None,NoFlags=0;Extended,ExtendedKey=0x0100;AltDown=0x2000;Repeat=0x4000;Up=0x8000;prevKeyStateDown;keyDown
+@set KEYEVENTFLAGS_DEF=invalid,unknown=-1;None,NoFlags=0;Extended,ExtendedKey=0x0100;AltDown=0x2000;Repeat=0x4000;KeyUp=0x8000;prevKeyStateDown;KeyDown
 @rem invalid,unknown=-1;None,NoFlags=0;Extended=0x0100;AltDown=0x2000;Repeat=0x4000;Up=0x8000
 
 @rem KF_DLGMODE
